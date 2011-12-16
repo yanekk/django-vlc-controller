@@ -1,0 +1,22 @@
+<li class='song clearfix' data-song-id="{{song.id}}" data-duration='{{song.duration}}' style='background-color: #{{song.background_colour}}'>
+    <span class='duration'>Duration: {{ song.duration_time }}</span>
+    <h4>{{song.name}}</h4>
+    <ul class='minimenu'>
+        <li>
+            Modify
+            <ul>
+                <li class='colour-changer'>Change colour:
+                    <select class='colours'>
+                        <option value='eee' {% if song.colour == 'eee' %}selected{% endif %}>grey</option>
+                        <option value='e77' {% if song.colour == 'e77' %}selected{% endif %}>red</option>
+                        <option value='7e7' {% if song.colour == '7e7' %}selected{% endif %}>green</option>
+                        <option value='77e' {% if song.colour == '77e' %}selected{% endif %}>blue</option>
+                    </select>
+                </li>
+                <li class='remove'>Remove</li>
+            </ul>
+        </li>
+    </ul>
+    <h5>Status: {{song.status}}</h5>
+</li>
+

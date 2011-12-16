@@ -1,0 +1,92 @@
+.song-list, .song-list-summary {
+    width: 49%;
+}
+.song-list {
+    height: 500px;
+    overflow-y: scroll;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    border-right: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    >li {
+        padding: 5px;
+        margin: 5px;
+        border-radius: 5px;
+        cursor: move;
+        h4, h5 {
+            margin: 0;
+            padding: 2px 0;
+        }
+        .duration {
+            font-size: 90%;
+            float: right;
+        }
+        .minimenu {
+            margin: 0;
+        }
+        .minimenu > li {
+            float: right;
+            list-style-type: none;
+            padding: 0;
+            border-bottom: 1px dotted;
+            font-size: 80%;
+            cursor: default;
+            > ul {
+                display: none;
+            }
+            &:hover {
+                color: red;
+            }
+            &:hover > ul {
+                display: block;
+                position: absolute;
+                list-style-type: none;
+                padding: 0;
+                background: #eee;
+                margin: 0;
+                color: black;
+                border: 1px solid #AAA;
+                border-radius: 3px;
+                border-top: 0;
+                >li {
+                    padding: 3px;
+                    &:hover {
+                        background: #CCC;
+                    }
+                }
+            }
+        }
+    }
+}
+#playlist, #playlist_summary  { float: left;  }
+#tracklist, #tracklist_summary { float: right; }
+
+#bottom_menu {
+    list-style-type: none;
+    margin: 0;
+    float: right;
+    >li {
+        float: left;
+        margin-right: 10px;
+    }
+}
+
+.song-list-summary > h5 {
+    float: left;
+    margin: 0;
+    font-size: 90%;
+    padding: 5px 0;
+}
+#playlist_summary > .total-duration {
+    float: right;
+    font-size: 90%;
+    padding: 5px 10px;
+
+    > em {
+        font-weight: bold;
+        font-style: normal;
+    }
+}
+

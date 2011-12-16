@@ -1,0 +1,95 @@
+/* line 1, ../sass/application.scss */
+body {
+  background: #e5e5e5;
+}
+
+/* line 5, ../sass/application.scss */
+#container {
+  background: white;
+  width: 990px;
+  margin: 0 auto;
+  min-height: 500px;
+  border-radius: 0 0 10px 10px;
+}
+
+/* line 12, ../sass/application.scss */
+#container > * {
+  padding: 0 5px;
+}
+
+/* line 15, ../sass/application.scss */
+header > h1 {
+  font-size: 150%;
+  margin: 0;
+  padding: 5px 0;
+  border-bottom: 2px dotted #e5e5e5;
+  margin-bottom: 5px;
+}
+
+/* line 22, ../sass/application.scss */
+footer {
+  padding-bottom: 10px !important;
+}
+
+/* line 25, ../sass/application.scss */
+hr {
+  border: 0;
+  border-bottom: 2px dotted #e5e5e5;
+  height: 0;
+}
+
+/* line 30, ../sass/application.scss */
+a {
+  color: #22A;
+}
+/* line 32, ../sass/application.scss */
+a:hover {
+  color: #44F;
+}
+
+/* line 36, ../sass/application.scss */
+#main_navigation {
+  list-style-type: none;
+  float: right;
+  margin: 0;
+  margin-top: 10px;
+}
+/* line 42, ../sass/application.scss */
+#main_navigation > li {
+  float: left;
+  padding: 0 10px;
+}
+/* line 45, ../sass/application.scss */
+#main_navigation > li > a {
+  padding: 5px 0px;
+}
+
+/* line 54, ../sass/application.scss */
+#login_form {
+  width: 50%;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+/* line 58, ../sass/application.scss */
+#login_form .errors {
+  padding: 10px;
+  color: red;
+  border: 1px solid red;
+  text-align: center;
+}
+/* line 64, ../sass/application.scss */
+#login_form table {
+  width: 100%;
+}
+/* line 67, ../sass/application.scss */
+#login_form input[type=submit] {
+  float: right;
+}
+/* line 70, ../sass/application.scss */
+#login_form label {
+  width: 30%;
+}
+/* line 73, ../sass/application.scss */
+#login_form input[type=text], #login_form input[type=password] {
+  width: 70%;
+}

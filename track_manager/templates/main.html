@@ -1,0 +1,41 @@
+{% extends "_layout.html" %}
+
+{% block css %}
+    <link rel='stylesheet' href='{{ STATIC_URL }}css/track-manager.css' />
+{% endblock %}
+
+{% block content %}
+
+<div id='radio_lists' class='clearfix'>
+    <ul id='playlist' class='song-list'>
+        {% for song in playlist %}
+            {% include '_list-item.html' %}
+        {% endfor %}
+    </ul>
+
+    <ul id='tracklist' class='song-list'>
+        {% for song in tracklist %}
+            {% include '_list-item.html' %}
+        {% endfor %}
+    </ul>
+    <div id='playlist_summary' class='song-list-summary'>
+        <h5>Playlist</h5>
+        <span class='total-duration' id='playlist_total_duration' data-total-duration='{{total_duration}}'>
+            Total duration: <em>0:00:00</em>
+        </span>
+    </div>
+    <div id='tracklist_summary' class='song-list-summary'>
+        <h5>Tracklist</h5>
+    </div>
+</div>
+<hr />
+
+{% endblock %}
+
+{% block footer %}
+<ul id='bottom_menu' class='clearfix'>
+    <li><a id='save_playlist' href='/tracks/update'>Save playlist & play</a></li>
+    <li><a href='/tracks/refresh'>Refresh track data</a></li>
+</ul>
+{% endblock %}
+

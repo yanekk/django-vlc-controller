@@ -1,0 +1,45 @@
+/* line 1, ../sass/console.scss */
+#console {
+  font-family: "Lucida Console", Monaco, monospace;
+}
+/* line 3, ../sass/console.scss */
+#console > span {
+  font-weight: bold;
+  background: #225;
+  display: block;
+  float: left;
+  padding: 3px 6px;
+  color: white;
+  border-radius: 50%;
+}
+
+/* line 13, ../sass/console.scss */
+.console-output {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+/* line 17, ../sass/console.scss */
+#console_output {
+  list-style-type: none;
+  padding: 0;
+}
+/* line 20, ../sass/console.scss */
+#console_output > li:nth-child(odd) {
+  background: #eee;
+}
+/* line 23, ../sass/console.scss */
+#console_output > li.error {
+  color: red;
+  font-weight: bold;
+}
+
+/* line 28, ../sass/console.scss */
+#console_input {
+  width: 95%;
+  margin-left: 5px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding: 3px;
+  font-family: inherit;
+}
