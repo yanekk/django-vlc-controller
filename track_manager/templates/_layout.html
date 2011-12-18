@@ -30,11 +30,11 @@
     <header>
         <ul id='main_navigation'>
             {% if user.is_authenticated %}
-                <li>{% if section == 'track_manager' %}Track Manager{% else %}<a href='/tracks'>Track Manager</a>{% endif %}</li>
-                <li>{% if section == 'console' %}VLC Console{% else %}<a href='/console'>VLC Console</a>{% endif %}</li>
-                <li><a href='/logout'>Log out</a></li>
+                <li>{% if section == 'track_manager' %}Track Manager{% else %}<a href='{% url tracks:main %}'>Track Manager</a>{% endif %}</li>
+                <li>{% if section == 'console' %}VLC Console{% else %}<a href='{% url tracks:console %}'>VLC Console</a>{%endif %}</li>
+                <li><a href='{% url logout %}'>Log out</a></li>
             {% else %}
-                <li><a href='/login'>Log in</a></li>
+                <li><a href='{% url login %}'>Log in</a></li>
             {% endif %}
         </ul>
         <h1>{% if not title %}Log in{% else %}{{ title }}{% endif %}</h1>

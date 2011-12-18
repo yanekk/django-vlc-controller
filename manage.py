@@ -13,7 +13,7 @@ import settings
 
 if __name__ == "__main__":
     if '--vlc-command' in sys.argv:
-        print 'nohup vlc {0} "file://{1}playlist.m3u" &'.format(settings.CR_VLC_PARAMETERS, settings.CR_PLAYLIST_DIR.replace(' ', '%20'))
+        print 'vlc {0} "file://{1}playlist.m3u"'.format(settings.CR_VLC_PARAMETERS, settings.CR_PLAYLIST_DIR.replace(' ', '%20'))
         exit()
     execute_manager(settings)
 

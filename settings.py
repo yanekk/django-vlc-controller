@@ -167,5 +167,5 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 CR_MUSIC_WATCH_DIR = '/home/yanekk/Muzyka/'
 CR_PLAYLIST_DIR    = '/home/yanekk/Muzyka/'
-CR_VLC_PARAMETERS  = '-Irc --rc-host=localhost:4121 --loop'
+CR_VLC_PARAMETERS  = '-Irc --rc-host=localhost:4121 --loop -d'
 

@@ -7,12 +7,9 @@ from django.views.generic.simple import redirect_to
 
 urlpatterns = patterns('',
     url(r'^$', redirect_to, {'url':'/tracks'}),
-    url(r'^tracks$', 'track_manager.views.main'),
-    url(r'^tracks/refresh$', 'track_manager.views.refresh'),
-    url(r'^tracks/update$', 'track_manager.views.update'),
-    url(r'^console$', 'track_manager.views.console'),
-    url(r'^login$', 'django.contrib.auth.views.login', {'template_name' : 'login.html'}),
-    url(r'^logout$', 'django.contrib.auth.views.logout', {'next_page' : '/login'})
+    url(r'^tracks', include('track_manager.urls', namespace="tracks", app_name="tracks")),
+    url(r'^login$', 'django.contrib.auth.views.login', {'template_name' : 'login.html'}, name='login'),
+    url(r'^logout$', 'django.contrib.auth.views.logout', {'next_page' : '/login'}, name='logout')
 
     # Examples:
     # url(r'^$', 'cable_radio.views.home', name='home'),

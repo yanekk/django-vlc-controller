@@ -31,7 +31,7 @@ $(function(){
                 }
 
                 var console_output = $("#console_output");
-                $.ajax('/console',{
+                $.ajax(base.attr('data-url'),{
                     data: "command="+escape(command),
                     headers: {'X-CSRFToken' : $('meta[name=csrf_token]').attr('content')},
                     type: 'POST',

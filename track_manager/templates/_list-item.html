@@ -1,22 +1,29 @@
-<li class='song clearfix' data-song-id="{{song.id}}" data-duration='{{song.duration}}' style='background-color: #{{song.background_colour}}'>
+<li class='song clearfix song-{{song.id}}' data-song-id="{{song.id}}" data-duration='{{song.duration}}' style='background-color: #{{song.background_colour}}'>
     <span class='duration'>Duration: {{ song.duration_time }}</span>
     <h4>{{song.name}}</h4>
-    <ul class='minimenu'>
-        <li>
-            Modify
-            <ul>
-                <li class='colour-changer'>Change colour:
-                    <select class='colours'>
-                        <option value='eee' {% if song.colour == 'eee' %}selected{% endif %}>grey</option>
-                        <option value='e77' {% if song.colour == 'e77' %}selected{% endif %}>red</option>
-                        <option value='7e7' {% if song.colour == '7e7' %}selected{% endif %}>green</option>
-                        <option value='77e' {% if song.colour == '77e' %}selected{% endif %}>blue</option>
-                    </select>
-                </li>
-                <li class='remove'>Remove</li>
-            </ul>
+
+
+    <h5 class='additional-info'>
+        <span>Album: <strong>{{song.album}}</strong></span>
+        <span>Track: <strong>{{song.track_number}}</strong></span>
+    </h5>
+    <a href='#minimenu' class='minimenu-opener'>Modify</a>
+    <br class='clr' />
+    <ul class='minimenu clearfix' >
+        <li class='colour-changer'>
+            <form method='post' action='{% url tracks:change-colour %}'>
+                <label for='colour'>Change colour:</label>
+                <select class='colours' name='colour'>
+                    <option value='EEE' {% if song.colour == 'EEE' %}selected{% endif %}>grey</option>
+                    <option value='ECC' {% if song.colour == 'ECC' %}selected{% endif %}>red</option>
+                    <option value='CEC' {% if song.colour == 'CEC' %}selected{% endif %}>green</option>
+                    <option value='CCE' {% if song.colour == 'CCE' %}selected{% endif %}>blue</option>
+                </select>
+                <input type='hidden' name='song_id' value='{{song.id}}' />
+
+            </form>
         </li>
+        <li class='remove'>Remove</li>
     </ul>
-    <h5>Status: {{song.status}}</h5>
 </li>
 

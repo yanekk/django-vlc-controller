@@ -2,25 +2,35 @@
 
 from django.db import models
 from glob import glob
-import settings
+
+import settings, os
 
 from mutagen.mp3 import MP3
 from mutagen.easyid3 import EasyID3
 # Create your models here.
 
+
 class Track(models.Model):
-    name = models.CharField(max_length=255)
     path = models.TextField()
     duration = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     colour = models.CharField(max_length=6, default='eee')
     not_found = models.BooleanField(default=False)
 
+    album = models.CharField(max_length=255, null=True)
+    track_number = models.IntegerField(null=True)
+    artist = models.CharField(max_length=255, null=True)
+    title  = models.CharField(max_length=255, null=True)
+
     def fetch_info(self):
         print u"Fetching metadata for {0}".format(self.path)
-        metadata = MP3(self.path, ID3=EasyID3)
-        self.name = "{0} - {1}".format(metadata['artist'][0].encode('utf-8'), metadata['title'][0].encode('utf-8'))
-        print round(metadata.info.length, 2)
+        metadata      = MP3(self.path, ID3=EasyID3)
+
         self.duration = round(metadata.info.length, 2)
+        self.artist       = metadata['artist'][0]
+        self.title        = metadata['title'][0]
+        self.album        = metadata['album'][0]
+        self.track_number = int(metadata['tracknumber'][0].split('/')[0])
+
 
     def background_colour(self):
         if self.not_found:
@@ -31,6 +41,12 @@ class Track(models.Model):
         if self.not_found:
             return "File not found"
         return "OK"
+
+    def name(self):
+        if (self.artist and self.title):
+            return u"{0} - {1}".format(self.artist, self.title)
+        else:
+            return os.path.basename(self.path)
 
     @classmethod
     def refresh(cls):
@@ -54,7 +70,9 @@ class Track(models.Model):
 
             else:
                 print "Creating new track..."
-                track = Track.objects.create(path=track_path)
+                track = Track()
+                track.path = track_path
+
                 track.fetch_info()
                 track.save()
 

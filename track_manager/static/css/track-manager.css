@@ -5,7 +5,6 @@
 
 /* line 4, ../sass/track-manager.scss */
 .song-list {
-  height: 500px;
   overflow-y: scroll;
   border: 1px solid #eee;
   border-radius: 5px;
@@ -13,6 +12,7 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+  padding-bottom: 50px;
 }
 /* line 13, ../sass/track-manager.scss */
 .song-list > li {
@@ -32,71 +32,119 @@
   float: right;
 }
 /* line 26, ../sass/track-manager.scss */
-.song-list > li .minimenu {
-  margin: 0;
+.song-list > li .additional-info {
+  font-weight: normal;
+  float: left;
 }
 /* line 29, ../sass/track-manager.scss */
-.song-list > li .minimenu > li {
-  float: right;
-  list-style-type: none;
-  padding: 0;
-  border-bottom: 1px dotted;
-  font-size: 80%;
-  cursor: default;
+.song-list > li .additional-info span {
+  font-weight: normal;
 }
-/* line 36, ../sass/track-manager.scss */
-.song-list > li .minimenu > li > ul {
-  display: none;
+/* line 33, ../sass/track-manager.scss */
+.song-list > li .minimenu-opener {
+  float: right;
+  font-size: 90%;
+  color: #555;
+  border-bottom: 1px dotted #555;
+  text-decoration: none;
 }
 /* line 39, ../sass/track-manager.scss */
-.song-list > li .minimenu > li:hover {
-  color: red;
-}
-/* line 42, ../sass/track-manager.scss */
-.song-list > li .minimenu > li:hover > ul {
+.song-list > li .minimenu-opener:after {
+  float: right;
   display: block;
-  position: absolute;
-  list-style-type: none;
-  padding: 0;
-  background: #eee;
-  margin: 0;
-  color: black;
-  border: 1px solid #AAA;
-  border-radius: 3px;
-  border-top: 0;
+  height: 0;
+  width: 0;
+  position: relative;
+  top: 4px;
+  left: 3px;
+  border: 4px solid #555;
+  content: '';
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
 }
 /* line 53, ../sass/track-manager.scss */
-.song-list > li .minimenu > li:hover > ul > li {
-  padding: 3px;
+.song-list > li .minimenu-opener.open:after {
+  border-top-color: #555;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  top: 6px;
+  left: 1px;
 }
-/* line 55, ../sass/track-manager.scss */
-.song-list > li .minimenu > li:hover > ul > li:hover {
-  background: #CCC;
+/* line 62, ../sass/track-manager.scss */
+.song-list > li .minimenu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 3px;
+  border-radius: 3px;
+  background: white;
+  padding: 2px;
+  float: right;
+  font-size: 90%;
+  display: none;
+}
+/* line 73, ../sass/track-manager.scss */
+.song-list > li .minimenu > li {
+  float: left;
+  margin-right: 5px;
+  height: 16px;
+  border-left: 1px solid #ccc;
+  margin: 5px;
+  padding: 2px;
+  padding-left: 5px;
+}
+/* line 82, ../sass/track-manager.scss */
+.song-list > li .minimenu > li:first-child {
+  border-left: 0;
+}
+/* line 85, ../sass/track-manager.scss */
+.song-list > li .minimenu > li.remove {
+  color: red;
+  cursor: pointer;
+}
+/* line 89, ../sass/track-manager.scss */
+.song-list > li .minimenu > li > form {
+  margin: 0;
+}
+/* line 91, ../sass/track-manager.scss */
+.song-list > li .minimenu > li > form > select {
+  height: 16px;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  border-radius: 3px;
+  font-size: 85%;
 }
 
-/* line 63, ../sass/track-manager.scss */
-#playlist, #playlist_summary {
+/* line 103, ../sass/track-manager.scss */
+#playlist, .playlist-summary {
   float: left;
 }
 
-/* line 64, ../sass/track-manager.scss */
-#tracklist, #tracklist_summary {
+/* line 104, ../sass/track-manager.scss */
+#tracklist, .tracklist-summary {
   float: right;
 }
 
-/* line 66, ../sass/track-manager.scss */
+/* line 105, ../sass/track-manager.scss */
+#tracklist .minimenu > .remove {
+  display: none;
+}
+
+/* line 108, ../sass/track-manager.scss */
 #bottom_menu {
   list-style-type: none;
   margin: 0;
   float: right;
 }
-/* line 70, ../sass/track-manager.scss */
+/* line 112, ../sass/track-manager.scss */
 #bottom_menu > li {
   float: left;
   margin-right: 10px;
 }
 
-/* line 76, ../sass/track-manager.scss */
+/* line 118, ../sass/track-manager.scss */
 .song-list-summary > h5 {
   float: left;
   margin: 0;
@@ -104,13 +152,13 @@
   padding: 5px 0;
 }
 
-/* line 82, ../sass/track-manager.scss */
+/* line 124, ../sass/track-manager.scss */
 #playlist_summary > .total-duration {
   float: right;
   font-size: 90%;
   padding: 5px 10px;
 }
-/* line 87, ../sass/track-manager.scss */
+/* line 129, ../sass/track-manager.scss */
 #playlist_summary > .total-duration > em {
   font-weight: bold;
   font-style: normal;

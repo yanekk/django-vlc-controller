@@ -12,14 +12,16 @@
 
 {% block content %}
 <div id='console'>
-    <div class='console-output'>
+    <div class='console-output main-widget'>
         <ul id='console_output'>
-            {% for line in output %}
-                {{ line }}<br />
-            {% endfor %}
+            <li {% if status == 'error' %}class='error'{% endif %}>
+                {% for line in output %}
+                    {{ line }}<br />
+                {% endfor %}
+            </li>
         </ul>
     </div>
-    <span>&gt;</span><input type='text' id='console_input' />
+    <span>&gt;</span><input type='text' id='console_input' data-url='{% url tracks:console %}'/>
 </div>
 {% endblock %}
 

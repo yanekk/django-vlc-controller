@@ -1,5 +1,6 @@
 import telnetlib
 import popen2
+import os
 
 class VLCController:
     def __init__(self):
@@ -19,25 +20,12 @@ class VLCController:
 
     @classmethod
     def update_and_play(cls, playlist_path):
-        vlc_instance = telnetlib.Telnet('localhost', 4121)
-        print 'handshake:', vlc_instance.read_until('>')
-        vlc_instance.write('stop\n')
-        print 'stop:', vlc_instance.read_until('>')
-        vlc_instance.write('clear\n')
-        print 'clear:', vlc_instance.read_until('>')
-        vlc_instance.write("add file://{0}\n".format(playlist_path.replace(' ', '%20')))
-        print "add:", vlc_instance.read_until('>')
-        vlc_instance.write("play\n")
-        print "play:", vlc_instance.read_until('>')
+        vlc_instance = VLCController()
 
-        vlc_instance.write("playlist\n")
-        print "playlist:", vlc_instance.read_until('>')
-
-        vlc_instance.write('logout\n')
-        print "logout:", vlc_instance.read_until('>')
+        vlc_instance.handshake()
+        vlc_instance.command("stop")
+        vlc_instance.command("clear")
+        vlc_instance.command("add file://{0}".format(playlist_path.replace(' ', '%20')))
+        vlc_instance.command("play")
         vlc_instance.close()
-
-    @classmethod
-    def run(cls, playlist_file_path, run_parameters):
-        popen2.popen2('nohup vlc {0} --loop "{1}" &'.format(run_parameters, playlist_file_path))
 
